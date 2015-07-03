@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myappproject"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="12"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="com.example.myappproject.MyApplication"
+        android:allowBackup="true"
+        android:label="@string/my_name"
+        android:icon="@drawable/ic_myicon"
+        android:logo="@drawable/ic_myicon"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".WBAuthActivity"
+            android:label="Fake微博"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- created by ADT ext plugin at 2015-05-13 14:48:56 -->
+        <activity
+            android:name=".WeiboListActivity"
+            android:label="微博圈"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name=".ImagePagerActivity"
+            android:label="图片"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserHomeActivity"
+            android:label="    我的微博"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NewWeiboActivity"
+            android:label="    发表微博"
+            android:screenOrientation="portrait"
+            android:theme="@style/myTheme" />
+        <activity
+            android:name=".NewCommentActivity"
+            android:label="    发评论"
+            android:screenOrientation="portrait"
+            android:theme="@style/myTheme" />
+        <activity
+            android:name=".NewRepostActivity"
+            android:label="    转发微博"
+            android:screenOrientation="portrait"
+            android:theme="@style/myTheme" />
+        <activity
+            android:name=".DetialWeiboActivity"
+            android:label="    微博正文"
+            android:screenOrientation="portrait"
+            android:theme="@style/myTheme" />
+        <!-- created by ADT ext plugin at 2015-05-17 20:13:10 -->
+        <activity
+            android:name=".UserInfoActivity"
+            android:label="    我的信息"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GetImageActivity"
+            android:label="    更换相册封面"
+            android:screenOrientation="portrait" >
+        </activity>
+    </application>
+
+</manifest>

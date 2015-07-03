@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="10dp" 
+    android:background="#FFFFFF"
+    android:descendantFocusability="blocksDescendants">
+
+    <ImageView
+        android:id="@+id/user_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp" >
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="name"
+            android:textColor="@color/username" />
+
+        <TextView
+            android:id="@+id/weibo_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="content"
+            android:textSize="15sp" 
+            android:autoLink="web"
+            />
+
+        <myview.MyGridView
+            android:id="@+id/gridview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnWidth="80dp"
+            android:gravity="center"
+            android:numColumns="3"
+            android:padding="2dp"
+            android:verticalSpacing="10dp" />
+
+        <LinearLayout
+            android:id="@+id/repost_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray_background"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/forward_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/username" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/forward_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp" 
+                android:layout_marginRight="10dp" 
+                android:layout_marginBottom="10dp"
+                android:autoLink="web"/>
+
+            <myview.MyGridView
+                android:id="@+id/forward_gridview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:columnWidth="80dp"
+                android:gravity="center"
+                android:numColumns="3"
+                android:verticalSpacing="10dp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:padding="5dp"
+                android:id="@+id/create_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="20111111"
+                android:textColor="@color/gray_text"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true" >
+
+                <TextView
+                    android:padding="5dp"
+                    android:id="@+id/forward_a_weibo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:drawableLeft="@drawable/forward"
+                    android:gravity="center"
+                    android:text="@string/forward"
+                    android:textColor="@color/gray_text"
+                    android:background="@drawable/imageselector"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:padding="5dp"
+                    android:id="@+id/comment_a_weibo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:drawableLeft="@drawable/comment1"
+                    android:gravity="center"
+                    android:text="@string/comment"
+                    android:textColor="@color/gray_text"
+                    android:background="@drawable/imageselector"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

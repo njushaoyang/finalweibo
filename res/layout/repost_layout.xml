@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true" >
+
+        <!-- 设置fillViewport属性表示充满整个ScrollView -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/weibo_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="说说分享心得..."
+                android:minLines="3"
+                android:padding="10dp" >
+            </EditText>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal" 
+                android:background="#E8E8E8">
+
+                <ImageView
+                    android:id="@+id/repost_head"
+                    android:layout_height="60dp"
+                    android:layout_width="60dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" 
+                    android:layout_marginLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/repost_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/repost_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" 
+                        android:maxLines="2"
+                        android:textColor="@color/gray_text"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/logo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:orientation="horizontal" >
+
+                <CheckBox
+                    android:id="@+id/checkBox_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="同时评论" 
+                    android:layout_alignParentBottom="true"/>
+                <TextView 
+                    android:id="@+id/tcount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:visibility="gone"
+                    android:textColor="@color/gray_text"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
