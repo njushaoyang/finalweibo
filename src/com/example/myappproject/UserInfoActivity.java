@@ -48,6 +48,7 @@ public class UserInfoActivity extends Activity {
 	private Button confirm;
 	private Button cancel;
 	private RelativeLayout cover;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -58,11 +59,11 @@ public class UserInfoActivity extends Activity {
 		weiboCount = (TextView) findViewById(R.id.weibo_count);
 		careCount = (TextView) findViewById(R.id.care_count);
 		fansCount = (TextView) findViewById(R.id.fans_count);
-		
+
 		stack = ActivityStack.getInstance();
 		stack.push(this);
-		
-		ActionBar ab=getActionBar();
+
+		ActionBar ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
 		ab.setDisplayShowHomeEnabled(false);
 
@@ -79,32 +80,42 @@ public class UserInfoActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Log.i("weibo", "logout");
-				cover=(RelativeLayout) findViewById(R.id.cover);
+				cover = (RelativeLayout) findViewById(R.id.cover);
 				cover.setVisibility(View.VISIBLE);
 			}
 		});
-		findViewById(R.id.chang_image).setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(UserInfoActivity.this,
-						GetImageActivity.class);
-				startActivityForResult(intent, 11);
-				RelativeLayout co = (RelativeLayout) findViewById(R.id.cover);
-			}
-		});
-		
-		confirm=(Button) findViewById(R.id.confirm);
-		cancel=(Button) findViewById(R.id.cancel);
+		findViewById(R.id.chang_image).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(UserInfoActivity.this,
+								GetImageActivity.class);
+						startActivityForResult(intent, 11);
+					}
+				});
+		findViewById(R.id.help).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(UserInfoActivity.this,
+								HelpActivity.class);
+						startActivity(intent);
+					}
+				});
+
+		confirm = (Button) findViewById(R.id.confirm);
+		cancel = (Button) findViewById(R.id.cancel);
 		confirm.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				cover.setVisibility(View.GONE);
 				AccessTokenKeeper.clear(UserInfoActivity.this);
 				((MyApplication) getApplication()).user = null;
 				CacheManage.notifyInvalid();
-				
+
 				Intent intent = new Intent(UserInfoActivity.this,
 						WBAuthActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -113,7 +124,7 @@ public class UserInfoActivity extends Activity {
 			}
 		});
 		cancel.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO 自动生成的方法存根
@@ -125,14 +136,14 @@ public class UserInfoActivity extends Activity {
 	private void setView(User user) {
 		name.setText(user.name);
 		introduction.setText(user.description);
-		weiboCount.setText(user.statuses_count+"");
-		careCount.setText(user.friends_count+"");
-		fansCount.setText(user.followers_count+"");
-		
+		weiboCount.setText(user.statuses_count + "");
+		careCount.setText(user.friends_count + "");
+		fansCount.setText(user.followers_count + "");
+
 		ImageLoader.getInstance().displayImage(user.avatar_large, head,
 				new SimpleImageLoadingListener() {
-					public void onLoadingComplete(String imageUri,
-							View view, Bitmap loadedImage) {
+					public void onLoadingComplete(String imageUri, View view,
+							Bitmap loadedImage) {
 						super.onLoadingComplete(imageUri, view, loadedImage);
 					}
 				});
@@ -166,12 +177,14 @@ public class UserInfoActivity extends Activity {
 
 		}
 	}
+
 	@Override
 	protected void onDestroy() {
 		// TODO 自动生成的方法存根
 		stack.remove(this);
 		super.onDestroy();
 	}
+
 	public boolean onMenuItemSelected(int featureId, android.view.MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
@@ -180,27 +193,19 @@ public class UserInfoActivity extends Activity {
 		}
 		return super.onMenuItemSelected(featureId, item);
 	};
-	
+
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == 11 && resultCode == 12) {
-			/*File file = getFilesDir();
-			File f = new File(file, GetImage.BACKGROUND_IMAGE);
-			if (!f.exists())
-				return;
-			BufferedInputStream bs;
-			try {
-				Log.i("weibo","success");
-				bs = new BufferedInputStream(new FileInputStream(f));
-				Bitmap btp = BitmapFactory.decodeStream(bs);
-				ImageView iv = (ImageView) lv.header2
-						.findViewById(R.id.background);
-				iv.setImageBitmap(btp);
-				bs.close();
-				btp = null;
-			} catch (IOException e) {
-				// TODO 自动生成的 catch 块
-				e.printStackTrace();
-			}*/
+			/*
+			 * File file = getFilesDir(); File f = new File(file,
+			 * GetImage.BACKGROUND_IMAGE); if (!f.exists()) return;
+			 * BufferedInputStream bs; try { Log.i("weibo","success"); bs = new
+			 * BufferedInputStream(new FileInputStream(f)); Bitmap btp =
+			 * BitmapFactory.decodeStream(bs); ImageView iv = (ImageView)
+			 * lv.header2 .findViewById(R.id.background);
+			 * iv.setImageBitmap(btp); bs.close(); btp = null; } catch
+			 * (IOException e) { // TODO 自动生成的 catch 块 e.printStackTrace(); }
+			 */
 		}
 	};
 

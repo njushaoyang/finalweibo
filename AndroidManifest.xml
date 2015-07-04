@@ -79,6 +79,11 @@
             android:label="    更换相册封面"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".HelpActivity"
+            android:label="    帮助说明"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

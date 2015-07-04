@@ -253,9 +253,37 @@ public class CommentListView extends ListView implements OnScrollListener {
 		this.totalItemCount = totalItemCount;
 	}
 
+//	@Override
+//	public boolean onTouchEvent(MotionEvent ev) {
+//		// TODO 自动生成的方法存根
+//		switch (ev.getAction()) {
+//		case MotionEvent.ACTION_DOWN:
+//			if (firstVisibleItem == 0) {
+//				isRemark = true;
+//				startY = (int) ev.getY();
+//			}
+//			break;
+//		case MotionEvent.ACTION_MOVE:
+//			onMove(ev);
+//			break;
+//		case MotionEvent.ACTION_UP:
+//			if (state == RELEASE) {
+//				state = REFRESHING;
+//				// 加载最新数据
+//				refreshViewByState();
+//				refreshListener.onRefresh();
+//			} else if (state == PULL) {
+//				state = NONE;
+//				isRemark = false;
+//				refreshViewByState();
+//			}
+//			break;
+//		}
+//		return super.onTouchEvent(ev);
+//	}
+
 	@Override
-	public boolean onTouchEvent(MotionEvent ev) {
-		// TODO 自动生成的方法存根
+	public boolean dispatchTouchEvent(MotionEvent ev) {
 		switch (ev.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			if (firstVisibleItem == 0) {
@@ -279,7 +307,7 @@ public class CommentListView extends ListView implements OnScrollListener {
 			}
 			break;
 		}
-		return super.onTouchEvent(ev);
+		return super.dispatchTouchEvent(ev);
 	}
 
 	// 判断移动过程操作
@@ -288,7 +316,7 @@ public class CommentListView extends ListView implements OnScrollListener {
 			return;
 		int tempY = (int) ev.getY();
 		int space = tempY - startY;
-		int topPadding = (space - headerHeight)/2;
+		int topPadding = (int) ((space - headerHeight) / 2);
 
 		switch (state) {
 		case NONE:
@@ -299,11 +327,11 @@ public class CommentListView extends ListView implements OnScrollListener {
 			break;
 		case PULL:
 			topPadding(topPadding);
-			if (space/2 >= headerHeight + 30
+			if (space / 2 >= headerHeight + 30
 					&& scrollState == SCROLL_STATE_TOUCH_SCROLL) {
 				state = RELEASE;
 				refreshViewByState();
-			}else if (space <= 0) {
+			} else if (space <= 0) {
 				state = NONE;
 				isRemark = false;
 				refreshViewByState();
@@ -311,7 +339,7 @@ public class CommentListView extends ListView implements OnScrollListener {
 			break;
 		case RELEASE:
 			topPadding(topPadding);
-			if (space/2 < headerHeight + 30) {
+			if (space / 2 < headerHeight + 30) {
 				state = PULL;
 				refreshViewByState();
 			} else if (space <= 0) {
@@ -375,7 +403,7 @@ public class CommentListView extends ListView implements OnScrollListener {
 		if (isLoading) {
 			isLoading = false;
 			footer.setVisibility(View.GONE);
-			//return;
+			// return;
 		}
 		state = NONE;
 		isRemark = false;
