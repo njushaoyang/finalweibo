@@ -288,7 +288,7 @@ public class CommentListView extends ListView implements OnScrollListener {
 			return;
 		int tempY = (int) ev.getY();
 		int space = tempY - startY;
-		int topPadding = space - headerHeight;
+		int topPadding = (space - headerHeight)/2;
 
 		switch (state) {
 		case NONE:
@@ -299,15 +299,19 @@ public class CommentListView extends ListView implements OnScrollListener {
 			break;
 		case PULL:
 			topPadding(topPadding);
-			if (space > headerHeight + 30
+			if (space/2 >= headerHeight + 30
 					&& scrollState == SCROLL_STATE_TOUCH_SCROLL) {
 				state = RELEASE;
+				refreshViewByState();
+			}else if (space <= 0) {
+				state = NONE;
+				isRemark = false;
 				refreshViewByState();
 			}
 			break;
 		case RELEASE:
 			topPadding(topPadding);
-			if (space < headerHeight + 30) {
+			if (space/2 < headerHeight + 30) {
 				state = PULL;
 				refreshViewByState();
 			} else if (space <= 0) {
